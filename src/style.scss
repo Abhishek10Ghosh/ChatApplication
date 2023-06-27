@@ -1,3 +1,22 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+$darkColor: #2f2d52; //sass variables
+
+
 .formContainer {
   background-color: #a7bcff;
   height: 100vh;
@@ -84,9 +103,9 @@
     height: 80%;
     display: flex;
     overflow: hidden;
-    // @include tablet {
-    //   width: 90%;
-    // }
+    @include tablet {
+      width: 90%;
+    }
 
     .sidebar {
       flex: 1;
@@ -104,9 +123,9 @@
 
         .logo {
           font-weight: bold;
-        //   @include tablet {
-        //     display: none;
-        //   }
+          @include tablet {
+            display: none;
+          }
         }
 
         .user {
@@ -127,10 +146,10 @@
             font-size: 10px;
             border: none;
             cursor: pointer;
-            // @include tablet {
-            //   position: absolute;
-            //   bottom: 10px;
-            // }
+            @include tablet {
+              position: absolute;
+              bottom: 10px;
+            }
           }
         }
       }
@@ -241,7 +260,7 @@
               background-color: white;
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
-              max-width: max-content;
+              max-width: max-content; // so that size of div is same as that of msg
             }
 
             img {
@@ -249,6 +268,7 @@
             }
           }
 
+          // if owner is sending the msg
           &.owner {
             flex-direction: row-reverse;
 
